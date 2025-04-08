@@ -1,9 +1,17 @@
 import { Table } from "antd";
 import { Link } from "react-router-dom";
 import exlamIcon from "../assets/images/exclamation-circle.png";
+import { useState } from "react";
+import DashboardModal from "./DashboardModal";
 
 const DashboardHomeTable = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalData, setModalData] = useState({});
 
+  const showModal = (data) => {
+    setIsModalOpen(true);
+    setModalData(data);
+  };
 
   const columns = [
     {
@@ -13,7 +21,7 @@ const DashboardHomeTable = () => {
       render: (text) => <a>{text}</a>,
     },
     {
-      title: "Name",
+      title: "User Name",
       dataIndex: "name",
       key: "name",
     },
@@ -23,22 +31,23 @@ const DashboardHomeTable = () => {
       key: "Email",
     },
     {
-      title: "Phone Number",
-      key: "Phone",
-      dataIndex: "Phone",
+      title: "Subscription",
+      key: "subscription",
+      dataIndex: "subscription",
     },
     {
       title: "Action",
       key: "Review",
-      aligen: 'center',
+      aligen: "center",
       render: (_, data) => (
-        <div className="  items-center justify-around textcenter flex">
+        <div className="  items-center justify-around textcenter flex ">
           {/* Review Icon */}
-          <img src={exlamIcon} alt="" className="btn  px-3 py-1 text-sm rounded-full" />
-          {/* <Link to={'/reviews'} className="btn bg-black text-white px-3 py-1 text-sm rounded-full">
-           
-            View
-          </Link> */}
+          <img
+            src={exlamIcon}
+            alt=""
+            className="btn  px-3 py-1 text-sm rounded-full cursor-pointer"
+            onClick={() => showModal(data)}
+          />
         </div>
       ),
     },
@@ -50,7 +59,7 @@ const DashboardHomeTable = () => {
       transIs: `${index + 1}`,
       name: "Henry",
       Email: "sharif@gmail.com",
-      Phone: "+12746478994",
+      subscription: "monthly",
       Review: "See Review",
       date: "16 Apr 2024",
       _id: index,
@@ -67,6 +76,47 @@ const DashboardHomeTable = () => {
         pagination={{ position: ["bottomCenter"] }}
         className="rounded-lg"
       />
+      <DashboardModal
+        isModalOpen={isModalOpen}
+        setIsModalOpen={setIsModalOpen}
+        maxWidth="500px"
+      >
+        <div>
+          <h2 className="text-lg text-center mb-4">User Details</h2>
+          <div className="flex justify-between mb-2 text-gray-600">
+            <p>#SL</p>
+            <p>{modalData.transIs}</p>
+          </div>
+          <div className="flex justify-between mb-2 text-gray-600">
+            <p>User Name</p>
+            <p>{modalData.name}</p>
+          </div>
+          <div className="flex justify-between mb-2 text-gray-600">
+            <p>Email</p>
+            <p>{modalData.Email}</p>
+          </div>
+          <div className="flex justify-between mb-2 text-gray-600">
+            <p>Mobile Phone</p>
+            <p>{modalData.Phone}</p>
+          </div>
+          <div className="flex justify-between mb-2 text-gray-600">
+            <p>Service</p>
+            <p>{modalData.transIs}</p>
+          </div>
+          <div className="flex justify-between mb-2 text-gray-600">
+            <p>Date</p>
+            <p>{modalData.transIs}</p>
+          </div>
+          <div className="flex justify-between mb-2 text-gray-600">
+            <p>Time</p>
+            <p>{modalData.transIs}</p>
+          </div>
+          <div className="flex justify-between mb-2 text-gray-600">
+            <p>Amount</p>
+            <p>{modalData.transIs}</p>
+          </div>
+        </div>
+      </DashboardModal>
     </div>
   );
 };
