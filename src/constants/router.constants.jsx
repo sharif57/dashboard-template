@@ -12,25 +12,19 @@ import { MdOutlineSecurityUpdateWarning } from "react-icons/md";
 import HostDetails from "../pages/Main/Host/HostDetails";
 import { FaServicestack } from "react-icons/fa6";
 import { BiMessageSquareDetail } from "react-icons/bi";
-
-import Earnings from "../pages/Main/Earnings/Earnings";
-import Driver from "../pages/Main/Driver/Driver";
-import DriverRequest from "../pages/Main/DriverRequest/DriverRequest";
 import Setting from "../pages/Main/Setting/Setting";
-import Support from "../pages/Main/Support/Support";
 import ChangePassword from "../pages/Main/Setting/Change-password/ChangePassword";
 import ForgotPassword from "../pages/Main/Setting/Change-password/ForgotPassword";
 import VerifyEmail from "../pages/Main/Setting/Change-password/VerifyEmail";
 import Trust from "../pages/Settings/Trust";
 import EditTrust from "../pages/Settings/EditTrust";
 import { TbCash } from "react-icons/tb";
-import { PiLaptopThin } from "react-icons/pi";
-import { GrUserManager } from "react-icons/gr";
-import { BiSupport } from "react-icons/bi";
 import { IoSettingsOutline } from "react-icons/io5";
-import { ShoppingBag } from "lucide-react";
+import { BadgePoundSterling, ShoppingBag } from "lucide-react";
 import Shop from "../pages/Main/Shop/Shop";
 import AddItem from "../pages/Main/Shop/AddItem";
+import Parties from "../pages/Main/Parties/Parties";
+import TransactionHome from "../pages/Main/Transaction/TransactionHome";
 
 export const dashboardItems = [
   {
@@ -51,29 +45,18 @@ export const dashboardItems = [
   },
 
   {
-    name: "Earning",
-    path: "earnings",
+    name: "Parties",
+    path: "parties",
     icon: TbCash,
-    element: <Earnings />,
+    element: <Parties />,
   },
   {
-    name: "Driver",
-    path: "driver",
-    icon: GrUserManager,
-    element: <Driver />,
+    name: "Transaction",
+    path: "transaction",
+    icon: BadgePoundSterling,
+    element: <TransactionHome />,
   },
-  {
-    name: "Driver Request",
-    path: "driver-request",
-    icon: PiLaptopThin,
-    element: <DriverRequest />,
-  },
-  {
-    name: "Support",
-    path: "support",
-    icon: BiSupport,
-    element: <Support />,
-  },
+
   {
     name: "Setting",
     path: "settings",

@@ -1,9 +1,11 @@
 import { Table } from "antd";
-import exlamIcon from "../assets/images/exclamation-circle.png";
+// import exlamIcon from "../assets/images/exclamation-circle.png";
+import exlamIcon from "../../../assets/images/exclamation-circle.png";
 import { useState } from "react";
-import DashboardModal from "./DashboardModal";
+import DashboardModal from "../../../Components/DashboardModal";
+// import DashboardModal from "./DashboardModal";
 
-const DashboardHomeTable = () => {
+const Transaction = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalData, setModalData] = useState({});
 
@@ -20,19 +22,24 @@ const DashboardHomeTable = () => {
       render: (text) => <a>{text}</a>,
     },
     {
-      title: "User Name",
+      title: "User",
       dataIndex: "name",
       key: "name",
     },
     {
-      title: "Email",
-      dataIndex: "Email",
-      key: "Email",
+      title: "Party Name",
+      dataIndex: "PartyName",
+      key: "PartyName",
     },
     {
-      title: "Subscription",
-      key: "subscription",
-      dataIndex: "subscription",
+      title: "Payment",
+      key: "Payment",
+      dataIndex: "Payment",
+    },
+    {
+      title: "Earnings",
+      key: "Earnings",
+      dataIndex: "Earnings",
     },
     {
       title: "Action",
@@ -57,9 +64,9 @@ const DashboardHomeTable = () => {
     data.push({
       transIs: `${index + 1}`,
       name: "Henry",
-      Email: "sharif@gmail.com",
-      subscription: "monthly",
-      Review: "See Review",
+      PartyName: "Party Name",
+      Payment: "$50",
+      Earnings: "$7.5",
       date: "16 Apr 2024",
       _id: index,
     });
@@ -67,7 +74,7 @@ const DashboardHomeTable = () => {
 
   return (
     <div className="rounded-lg border py-4 bg-white mt-8 recent-users-table">
-      <h3 className="text-2xl text-black mb-4 pl-2">Recent Users</h3>
+      <h3 className="text-2xl text-black mb-4 pl-2">Transaction</h3>
       {/* Ant Design Table */}
       <Table
         columns={columns}
@@ -120,4 +127,4 @@ const DashboardHomeTable = () => {
   );
 };
 
-export default DashboardHomeTable;
+export default Transaction;

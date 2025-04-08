@@ -1,6 +1,6 @@
 import { useState, useRef } from "react";
 import { ArrowLeft, Image, X } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function AddItem() {
   const router = useNavigate();
@@ -63,13 +63,13 @@ export default function AddItem() {
     <div className="rounded-lg bg-white">
       {/* Header */}
       <header className="flex items-center p-4 border-b border-[#FFD6D3]">
-        <button
-          onClick={() => router.back()}
+        <Link to='/shop'
+        //   onClick={() => router.back()}
           className="flex items-center text-[#E64A19] font-medium"
         >
           <ArrowLeft className="w-5 h-5 mr-2" />
           Add Item
-        </button>
+        </Link>
       </header>
 
       {/* Form */}
