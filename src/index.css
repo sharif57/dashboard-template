@@ -9,7 +9,12 @@
   padding: 0;
   text-align: start;
   border: none;
-  font-family: "Lora", serif;
+  font-family: "Mulish";
+}
+
+.ant-table-thead > tr > th {
+  background-color: #E73E1E !important; /* Blue background */
+  color: white !important; /* White text */
 }
 
 

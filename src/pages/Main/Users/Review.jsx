@@ -137,7 +137,7 @@ export default function Review() {
                 <div className="w-1/3 bg-[#f8f8f8] p-6 rounded-lg">
                     {selectedReview ? (
                         <div>
-                            <h1 className="text-4xl font-semibold text-center font-serif">Report Details</h1>
+                            <h1 className="text-4xl font-semibold text-center ">Report Details</h1>
                             
                             <div className="mx-auto bg-gray-100 p-4 rounded-lg shadow-md">
                                 <h1 className="text-xl font-semibold text-gray-900">{selectedReview.user}</h1>
@@ -148,7 +148,7 @@ export default function Review() {
                             </div>
                         </div>
                     ) : (
-                        <p className="text-4xl font-semibold text-center font-serif">Select a user and  to see report details</p>
+                        <p className="text-4xl font-semibold text-center ">Select a user and  to see report details</p>
                     )}
                 </div>
             </div>

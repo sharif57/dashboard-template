@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import  { useEffect, useState } from "react";
 import { Outlet } from "react-router-dom";
 import Sidebar from "./Sidebar";
 import Header from "./Header";
@@ -19,7 +19,7 @@ const Main = () => {
       <div className="">
         <Sidebar />
       </div>
-      <div className="flex-1 pl-[326px] bg-[#F2F5F7]">
+      <div className="flex-1 pl-[326px] bg-[#fdece9]">
         <div className={`w-full z-10 transition-all ${
           isScrolled
             ? "sticky top-0 bg-white shadow-md p-0"
