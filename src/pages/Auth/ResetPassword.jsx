@@ -136,12 +136,10 @@
 // export default ResetPassword;
 
 import { useState } from "react"
-import { Link } from "react-router-dom"
 
 export default function ResetPassword() {
   const [password, setPassword] = useState("")
   const [confirmPassword, setConfirmPassword] = useState("")
-  const [rememberMe, setRememberMe] = useState(false)
   const [showPassword, setShowPassword] = useState(false)
   const [showPassword2, setShowPassword2] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
@@ -156,7 +154,7 @@ export default function ResetPassword() {
     setIsLoading(true)
     try {
       await new Promise((resolve) => setTimeout(resolve, 1000))
-      console.log("Reset password with:", { password, rememberMe })
+      console.log("Reset password with:", { password })
     } catch (error) {
       console.error("Reset failed:", error)
     } finally {
