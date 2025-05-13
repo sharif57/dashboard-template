@@ -58,9 +58,9 @@ const Sidebar = () => {
                         to={path}
                         className={({ isActive }) =>
                           isActive
-                            ? "bg-[#E73E1E] text-white" +
+                            ? "bg-[#DD7109] text-white" +
                             " w-full px-4 py-3 flex items-center justify-start gap-3 text-md transition-all rounded-full"
-                            : " hover:text-white  hover:bg-[#e6715a]" +
+                            : " hover:text-white  hover:bg-[#c0844c]" +
                             " w-full px-4 py-3 flex items-center justify-start gap-3 text-md transition-all rounded-full"
                         }
                       >

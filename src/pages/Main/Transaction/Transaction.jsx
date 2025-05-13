@@ -22,25 +22,21 @@ const Transaction = () => {
       render: (text) => <a>{text}</a>,
     },
     {
-      title: "User",
+      title: "User Name",
       dataIndex: "name",
       key: "name",
     },
     {
-      title: "Party Name",
+      title: "Subscription",
       dataIndex: "PartyName",
       key: "PartyName",
     },
     {
-      title: "Payment",
-      key: "Payment",
-      dataIndex: "Payment",
+      title: "Date",
+      key: "date",
+      dataIndex: "date",
     },
-    {
-      title: "Earnings",
-      key: "Earnings",
-      dataIndex: "Earnings",
-    },
+  
     {
       title: "Action",
       key: "Review",
@@ -65,8 +61,6 @@ const Transaction = () => {
       transIs: `${index + 1}`,
       name: "Henry",
       PartyName: "Party Name",
-      Payment: "$50",
-      Earnings: "$7.5",
       date: "16 Apr 2024",
       _id: index,
     });
@@ -74,7 +68,7 @@ const Transaction = () => {
 
   return (
     <div className="rounded-lg border py-4 bg-white mt-8 recent-users-table">
-      <h3 className="text-2xl text-black mb-4 pl-2">Transaction</h3>
+      <h3 className="text-2xl text-black mb-4 pl-2">Earnings</h3>
       {/* Ant Design Table */}
       <Table
         columns={columns}

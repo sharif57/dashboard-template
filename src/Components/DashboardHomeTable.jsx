@@ -35,6 +35,11 @@ const DashboardHomeTable = () => {
       dataIndex: "subscription",
     },
     {
+      title: "Date",
+      key: "date",
+      dataIndex: "date",
+    },
+    {
       title: "Action",
       key: "Review",
       aligen: "center",
@@ -67,7 +72,7 @@ const DashboardHomeTable = () => {
 
   return (
     <div className="rounded-lg border py-4 bg-white mt-8 recent-users-table">
-      <h3 className="text-2xl text-black mb-4 pl-2">Recent Users</h3>
+      <h3 className="text-2xl text-black mb-4 pl-2">Recent Transactions</h3>
       {/* Ant Design Table */}
       <Table
         columns={columns}

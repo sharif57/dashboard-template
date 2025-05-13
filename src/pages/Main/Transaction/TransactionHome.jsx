@@ -3,7 +3,7 @@ import Transaction from "./Transaction";
 export default function TransactionHome() {
   return (
     <div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-10 lg:gap-x-32  gap-y-10 ">
+      {/* <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-10 lg:gap-x-32  gap-y-10 ">
         <div className=" flex items-center justify-center gap-6 rounded-lg bg-white  ">
           <div className="bg-[#FAE9E6] p-6 rounded-2xl">
             <img src="/users.png" alt="" />
@@ -23,7 +23,7 @@ export default function TransactionHome() {
             <h3 className="text-[30px] font-extralight">145</h3>
           </div>
         </div>
-      </div>
+      </div> */}
 
       <Transaction></Transaction>
       

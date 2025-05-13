@@ -39,7 +39,7 @@ const Header = () => {
 
   return (
 
-    <div className="w-full h-[88px] flex justify-between items-center rounded-lg py-[16px] px-[32px] shadow-lg bg-white border border-[#E73E1E]">
+    <div className="w-full h-[88px] text-white flex justify-between items-center rounded-lg py-[16px] px-[32px] shadow-lg bg-[#DD7109] border border-[#E73E1E]">
       <div className="text-start space-y-0.5">
         <p className="text-sm md:text-xl font-light">
           {"Welcome, Jane Cooper"}

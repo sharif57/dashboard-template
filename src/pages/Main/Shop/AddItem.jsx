@@ -1,207 +1,164 @@
-import { useState, useRef } from "react";
-import { ArrowLeft, Image, X } from "lucide-react";
-import { Link, useNavigate } from "react-router-dom";
+// import React from 'react'
+
+// export default function AddItem() {
+//   return (
+//     <div>AddItem</div>
+//   )
+// }
+
+import { useState } from "react";
+import { Link } from "react-router-dom";
 
 export default function AddItem() {
-  const router = useNavigate();
-  const fileInputRef = useRef(null);
-  const [formData, setFormData] = useState({
-    title: "",
-    price: "",
-    category: "",
-    rating: "",
-    link: "",
-  });
-  const [imageFile, setImageFile] = useState(null);
-  const [imagePreview, setImagePreview] = useState(null);
+  // const router = useRouter()
+  const [title, setTitle] = useState("");
+  const [subtitle, setSubtitle] = useState("");
+  const [amount, setAmount] = useState("");
+  const [features, setFeatures] = useState([
+    { id: "1", name: "Full access to Site Explorer", selected: true },
+    { id: "2", name: "Keyword Explorer searches", selected: true },
+    { id: "3", name: "Competitor Analysis reports", selected: true },
+    { id: "4", name: "AI Marketing & SEO recommendations", selected: false },
+    { id: "5", name: "Gamified challenges access", selected: false },
+    { id: "6", name: "Priority support (for Pro & Elite)", selected: false },
+  ]);
 
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-  };
-
-  const handleImageSelect = (e) => {
-    if (e.target.files && e.target.files[0]) {
-      const file = e.target.files[0];
-      setImageFile(file);
-
-      // Create preview URL
-      const reader = new FileReader();
-      reader.onload = (e) => {
-        if (e.target?.result) {
-          setImagePreview(e.target.result);
-        }
-      };
-      reader.readAsDataURL(file);
-    }
-  };
-
-  const clearImage = () => {
-    setImageFile(null);
-    setImagePreview(null);
-    if (fileInputRef.current) {
-      fileInputRef.current.value = "";
-    }
+  const toggleFeature = (id) => {
+    setFeatures(
+      features.map((feature) =>
+        feature.id === id
+          ? { ...feature, selected: !feature.selected }
+          : feature
+      )
+    );
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Here you would typically upload the image and save the form data
-    console.log("Form data:", formData);
-    console.log("Image file:", imageFile);
+    // Here you would typically send this data to your backend
+    const newSubscription = {
+      title,
+      subtitle,
+      amount,
+      features: features.filter((f) => f.selected).map((f) => f.name),
+    };
 
-    // Mock successful submission
-    alert("Item added successfully!");
-    router.back();
+    console.log("New subscription created:", newSubscription);
+
+    // Reset form and redirect back to pricing page
+    setTitle("");
+    setSubtitle("");
+    setAmount("");
+    setFeatures(features.map((f) => ({ ...f, selected: false })));
+
+    // Go back to main pricing page
+    // router.push("/")
   };
 
   return (
-    <div className="rounded-lg bg-white">
-      {/* Header */}
-      <header className="flex items-center p-4 border-b border-[#FFD6D3]">
-        <Link to='/shop'
-        //   onClick={() => router.back()}
-          className="flex items-center text-[#E64A19] font-medium"
-        >
-          <ArrowLeft className="w-5 h-5 mr-2" />
-          Add Item
-        </Link>
-      </header>
+    <div className=" p-6">
+      <div className=" ">
+        <div className="bg-white p-4 rounded-lg shadow-sm mb-6 flex items-center">
+          <Link to="/subscription" className="mr-4 text-gray-700">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-5 w-5"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+            >
+              <path
+                fillRule="evenodd"
+                d="M9.707 14.707a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 1.414L7.414 9H15a1 1 0 110 2H7.414l2.293 2.293a1 1 0 010 1.414z"
+                clipRule="evenodd"
+              />
+            </svg>
+          </Link>
+          <h1 className="text-lg font-medium text-gray-800">
+            Add Subscription
+          </h1>
+        </div>
 
-      {/* Form */}
-      <div className=" mx-auto p-4">
-        <h1 className="text-xl font-bold mb-6">Add Item</h1>
-
-        <form onSubmit={handleSubmit}>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {/* Image Upload */}
-            <div>
-                <label className="block text-sm font-medium mb-2">Image</label>
-                <div className="relative">
-                    {imagePreview ? (
-                        <div className="relative w-full h-40 rounded-md overflow-hidden">
-                            <img
-                                src={imagePreview || "/placeholder.svg"}
-                                alt="Preview"
-                                className="w-full h-full object-cover"
-                            />
-                            <button
-                                type="button"
-                                onClick={clearImage}
-                                className="absolute top-2 right-2 bg-white rounded-full p-1 shadow-md"
-                            >
-                                <X className="w-4 h-4 text-red-500" />
-                            </button>
-                        </div>
-                    ) : (
-                        <div
-                            className="w-full bg-[#FFF8F8] border border-[#FFD6D3] rounded-md p-3 cursor-pointer"
-                            onClick={() => fileInputRef.current?.click()}
-                        >
-                            <div className="flex justify-between items-center w-full">
-                                <span className="text-gray-500">Select image</span>
-                                <Image className="w-5 h-5" />
-                            </div>
-                            <input
-                                ref={fileInputRef}
-                                type="file"
-                                accept="image/*"
-                                className="hidden"
-                                onChange={handleImageSelect}
-                            />
-                        </div>
-                    )}
-                </div>
-            </div>
-
-            {/* Category */}
-            <div>
-              <label className="block text-sm font-medium mb-2">Category</label>
-              <select
-                name="category"
-                value={formData.category}
-                onChange={handleInputChange}
-                className="w-full bg-[#FFF8F8] border border-[#FFD6D3] rounded-md p-3 appearance-none"
-              >
-                <option value="" disabled>
-                  Select category
-                </option>
-                <option value="top-sales">Top Sales</option>
-                <option value="drinks">Drinks</option>
-                <option value="shortlist">Shortlist</option>
-              </select>
-            </div>
-
-            {/* Title */}
-            <div>
-              <label className="block text-sm font-medium mb-2">Title</label>
+        <div className="max-w-2xl">
+          <form onSubmit={handleSubmit}>
+            <div className="space-y-4 mb-6">
               <input
                 type="text"
-                name="title"
-                placeholder="Enter title"
-                value={formData.title}
-                onChange={handleInputChange}
-                className="w-full bg-[#FFF8F8] border border-[#FFD6D3] rounded-md p-3"
+                placeholder="Package Title"
+                className="w-full px-4 py-3 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent"
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
+                required
               />
-            </div>
 
-            {/* Price */}
-            <div>
-              <label className="block text-sm font-medium mb-2">Price</label>
               <input
-                type="number"
-                name="price"
-                placeholder="Enter price"
-                value={formData.price}
-                onChange={handleInputChange}
-                className="w-full bg-[#FFF8F8] border border-[#FFD6D3] rounded-md p-3"
+                type="text"
+                placeholder="Package Subtitle"
+                className="w-full px-4 py-3 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent"
+                value={subtitle}
+                onChange={(e) => setSubtitle(e.target.value)}
+                required
               />
-            </div>
 
-            {/* Rating */}
-            <div>
-              <label className="block text-sm font-medium mb-2">Rating</label>
               <input
-                type="number"
-                name="rating"
-                placeholder="Enter rating"
-                min="0"
-                max="5"
-                step="0.1"
-                value={formData.rating}
-                onChange={handleInputChange}
-                className="w-full bg-[#FFF8F8] border border-[#FFD6D3] rounded-md p-3"
+                type="text"
+                placeholder="Package Amount"
+                className="w-full px-4 py-3 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent"
+                value={amount}
+                onChange={(e) => setAmount(e.target.value)}
+                required
               />
             </div>
 
-            {/* Link */}
-            <div>
-              <label className="block text-sm font-medium mb-2">Link</label>
-              <input
-                type="url"
-                name="link"
-                placeholder="Paste your link"
-                value={formData.link}
-                onChange={handleInputChange}
-                className="w-full bg-[#FFF8F8] border border-[#FFD6D3] rounded-md p-3"
-              />
-            </div>
-          </div>
+            <div className="bg-white p-5 rounded-lg border border-gray-200 mb-6">
+              <h2 className="text-amber-600 font-medium mb-4">
+                Select Features :
+              </h2>
 
-          {/* Save Button */}
-          <div className="mt-8 flex justify-center">
-            <button
-              type="submit"
-              className="bg-[#E64A19] hover:bg-[#D84315] text-white font-medium py-3 px-8 rounded-full transition-colors w-full max-w-xs"
-            >
-              Save
-            </button>
-          </div>
-        </form>
+              <div className="space-y-3">
+                {features.map((feature) => (
+                  <div key={feature.id} className="flex items-center">
+                    <div
+                      className={`w-5 h-5 rounded-full ${
+                        feature.selected
+                          ? "bg-amber-500"
+                          : "bg-white border border-gray-300"
+                      } flex items-center justify-center mr-3 cursor-pointer`}
+                      onClick={() => toggleFeature(feature.id)}
+                    >
+                      {feature.selected && (
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          className="h-3 w-3 text-white"
+                          viewBox="0 0 20 20"
+                          fill="currentColor"
+                        >
+                          <path
+                            fillRule="evenodd"
+                            d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                            clipRule="evenodd"
+                          />
+                        </svg>
+                      )}
+                    </div>
+                    <span className="text-sm text-gray-700">
+                      {feature.name}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="flex justify-center">
+              <button
+                type="submit"
+                className="px-8 py-3 bg-amber-600 hover:bg-amber-700 text-white rounded-md transition-colors font-medium"
+              >
+                Create
+              </button>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
   );

@@ -12,7 +12,7 @@ export const mainTheme = {
     //     colorText: "#1F2852",
     //     borderColor: "#FAFAFA",
     //     headerColor: "#1F2852",
-    //     footerColor: "rgba(31, 41, 55, 0.88)",
+    //     footerColor: "rgba(31, 41, 55, 0 .88)",
     //     marginXXS: 4,
     //     colorLinkActive: "rgb(107, 114, 128)",
     //     headerSplitColor: "rgb(107, 114, 128)",
