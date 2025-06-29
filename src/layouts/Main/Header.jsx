@@ -10,7 +10,7 @@ const Header = () => {
   const navigate = useNavigate();
   const loacatin = useLocation();
   const notificationRef = useRef(null);
-  const [notificationPopup, setNotificationPopup] = useState(false);
+  const [, setNotificationPopup] = useState(false);
 
   const handleChange = (value) => {
     console.log(`selected ${value}`);
@@ -39,7 +39,7 @@ const Header = () => {
 
   return (
 
-    <div className="w-full h-[88px] text-white flex justify-between items-center rounded-lg py-[16px] px-[32px] shadow-lg bg-[#DD7109] border border-[#E73E1E]">
+    <div className="w-full h-[88px] text-black flex justify-between items-center rounded-lg py-[16px] px-[32px] shadow-lg bg-[#FFFFFF] border ">
       <div className="text-start space-y-0.5">
         <p className="text-sm md:text-xl font-light">
           {"Welcome, Jane Cooper"}
@@ -48,7 +48,7 @@ const Header = () => {
       </div>
       <div className="flex gap-x-[41px]">
         <div
-          onClick={(e) => navigate("/notifications")}
+          onClick={() => navigate("/notifications")}
           className="relative flex items-center "
         >
           <Badge style={{ backgroundColor: "#000000", width: '20px', height: '20px', objectFit: 'contain' }} count={1}>

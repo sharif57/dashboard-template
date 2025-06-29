@@ -10,7 +10,7 @@ import Swal from "sweetalert2";
 const Sidebar = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  const [openNome, setOpenNome] = useState({});
+  const [, setOpenNome] = useState({});
 
   const handleLogOut = () => {
     Swal.fire({
@@ -36,9 +36,9 @@ const Sidebar = () => {
   return (
     <div className="fixed top-0 left-0 w-[290px] min-h-screen h-full pr-0 bg-[#FFFFFF]">
       <div className="h-full flex flex-col justify-between  pt-[50px] border drop-shadow">
-        <div className="space-y[24px">
+        <div className="">
           <div className="">
-            <img className=" mx-auto" src={logo} alt="" />
+            <img className="w-36 mx-auto" src={logo} alt="" />
           </div>
           <ul className="mt-10 max-h-[650px] overflow-y-auto space-y-1 xl:space-y-2 px-4">
             {routeLinkGenerators(dashboardItems).map(
@@ -58,9 +58,9 @@ const Sidebar = () => {
                         to={path}
                         className={({ isActive }) =>
                           isActive
-                            ? "bg-[#DD7109] text-white" +
+                            ? "bg-[#3698DC] text-white" +
                             " w-full px-4 py-3 flex items-center justify-start gap-3 text-md transition-all rounded-full"
-                            : " hover:text-white  hover:bg-[#c0844c]" +
+                            : " hover:text-white  hover:bg-[#3698DC]" +
                             " w-full px-4 py-3 flex items-center justify-start gap-3 text-md transition-all rounded-full"
                         }
                       >

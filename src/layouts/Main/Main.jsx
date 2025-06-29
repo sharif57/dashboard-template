@@ -19,7 +19,7 @@ const Main = () => {
       <div className="">
         <Sidebar />
       </div>
-      <div className="flex-1 pl-[326px] bg-[#faf0e6]">
+      <div className="flex-1 pl-[326px] bg-[#e6e6e6]">
         <div className={`w-full z-10 transition-all ${
           isScrolled
             ? "sticky top-0 bg-white shadow-md p-0"
